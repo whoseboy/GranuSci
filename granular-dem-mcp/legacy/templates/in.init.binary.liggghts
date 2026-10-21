@@ -1,0 +1,60 @@
+# 二元混合床层初始化（振动偏析研究）：小颗粒 type 1 + 大/重颗粒 type 2
+# 占位符（runner._gen_init_binary 替换）：
+#   meshfile radius_s radius_l rho_s rho_l w1 w2 mass_in ins_ymax restart_out
+
+echo            both
+log             log.init
+
+atom_style    granular
+atom_modify   map array
+boundary      f f f
+newton        off
+
+communicate   single vel yes
+
+units         si
+
+# 模拟域包住容器（容器 x[0,0.1] y[0,0.2] z[0,0.0045]，STL scale 0.001）
+region        domain block -0.005 0.105 -0.05 0.25 -0.005 0.010 units box
+create_box    2 domain
+
+# 方槽网格
+fix   cad all mesh/surface file ${meshfile} type 1 scale 0.001
+fix   walls all wall/gran model hertz tangential history mesh n_meshes 1 meshes cad
+
+# 材料属性（双类型 2x2 矩阵，跨类型取同值）
+fix  m1 all property/global youngsModulus peratomtype 5.e7 5.e7
+fix  m2 all property/global poissonsRatio peratomtype 0.45 0.45
+fix  m3 all property/global coefficientRestitution peratomtypepair 2 0.95 0.95 0.95 0.95
+fix  m4 all property/global coefficientFriction peratomtypepair 2 0.3 0.3 0.3 0.3
+fix  m5 all property/global coefficientRollingFriction peratomtypepair 2 0.03 0.03 0.03 0.03
+
+pair_style  gran model hertz tangential history rolling_friction epsd2 torsionTorque on
+pair_coeff  * *
+
+timestep    0.00001
+
+fix gravi all gravity 9.81 vector 0.0 -1.0 0.0
+fix integr all nve/sphere
+
+thermo        10000
+thermo_style  custom step atoms
+thermo_modify lost ignore norm no
+
+# 两种颗粒模板：小颗粒(type1) 与 大/重颗粒(type2)；密度按设计换算
+fix pts1 all particletemplate/sphere 15485863 atom_type 1 radius constant ${radius_s} density constant ${rho_s}
+fix pts2 all particletemplate/sphere 49979687 atom_type 2 radius constant ${radius_l} density constant ${rho_l}
+# 质量分数加权的混合分布（w1+w2=1，由体积分数与密度换算）
+fix pdd all particledistribution/discrete 15485867 2 pts1 ${w1} pts2 ${w2}
+
+# 插入区域：容器内部
+region insreg block 0.003 0.097 0.005 ${ins_ymax} 0.0 0.0045 units box
+
+# 插入（mass_in 控制总质量=目标颗数的小颗粒当量）+ 两级沉降
+fix ins all insert/pack seed 32452843 distributiontemplate pdd maxattempt 100000 insert_every once overlapcheck yes all_in yes region insreg mass_in_region ${mass_in}
+
+run 400000
+unfix ins
+run 400000
+
+write_restart ${restart_out}

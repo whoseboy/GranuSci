@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ddda-mcp": {
+      "command": "python",
+      "args": ["server.py"],
+      "cwd": "."
+    }
+  }
+}

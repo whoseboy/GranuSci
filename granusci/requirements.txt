@@ -1,0 +1,7 @@
+langgraph>=0.2
+httpx
+mcp>=1.29
+chromadb
+python-dotenv
+rich
+pydantic

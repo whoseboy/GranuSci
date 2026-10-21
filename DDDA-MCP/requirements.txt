@@ -1,0 +1,16 @@
+mcp==1.29.1
+sympy==1.14.0
+numpy==2.5.2
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.0
+scikit-fuzzy==0.5.0
+openpyxl==3.1.5
+joblib==1.5.3
+matplotlib==3.11.1
+tqdm==4.70.0
+uvicorn==0.52.4
+starlette==1.6.0
+pydantic==2.13.4
+anyio==4.14.2
+httpx==0.28.1

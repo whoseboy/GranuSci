@@ -1,0 +1,86 @@
+solid "设计1<stl unit=MM>"
+   facet normal -6.07153216591882E-17 0 1
+      outer loop
+         vertex 100 200 4.50000000000001
+         vertex 0 200 4.5
+         vertex 100 0 4.50000000000001
+      endloop
+   endfacet
+   facet normal -6.07153216591882E-17 0 1
+      outer loop
+         vertex 100 0 4.50000000000001
+         vertex 0 200 4.5
+         vertex 0 0 4.5
+      endloop
+   endfacet
+   facet normal -1 0 0
+      outer loop
+         vertex 0 200 4.5
+         vertex 0 200 0
+         vertex 0 0 4.5
+      endloop
+   endfacet
+   facet normal -1 0 0
+      outer loop
+         vertex 0 0 4.5
+         vertex 0 200 0
+         vertex 0 0 0
+      endloop
+   endfacet
+   facet normal 6.12303176911189E-17 0 -1
+      outer loop
+         vertex 0 200 0
+         vertex 100 200 6.12303176911189E-15
+         vertex 0 0 0
+      endloop
+   endfacet
+   facet normal 6.12303176911189E-17 0 -1
+      outer loop
+         vertex 0 0 0
+         vertex 100 200 6.12303176911189E-15
+         vertex 100 0 6.12303176911189E-15
+      endloop
+   endfacet
+   facet normal 1 0 0
+      outer loop
+         vertex 100 200 6.12303176911189E-15
+         vertex 100 200 4.50000000000001
+         vertex 100 0 6.12303176911189E-15
+      endloop
+   endfacet
+   facet normal 1 0 0
+      outer loop
+         vertex 100 0 6.12303176911189E-15
+         vertex 100 200 4.50000000000001
+         vertex 100 0 4.50000000000001
+      endloop
+   endfacet
+   facet normal 0 1 0
+      outer loop
+         vertex 100 200 4.50000000000001
+         vertex 100 200 6.12303176911189E-15
+         vertex 0 200 4.5
+      endloop
+   endfacet
+   facet normal 0 1 0
+      outer loop
+         vertex 0 200 4.5
+         vertex 100 200 6.12303176911189E-15
+         vertex 0 200 0
+      endloop
+   endfacet
+   facet normal 0 -1 0
+      outer loop
+         vertex 100 0 6.12303176911189E-15
+         vertex 100 0 4.50000000000001
+         vertex 0 0 0
+      endloop
+   endfacet
+   facet normal 0 -1 0
+      outer loop
+         vertex 0 0 0
+         vertex 100 0 4.50000000000001
+         vertex 0 0 4.5
+      endloop
+   endfacet
+endsolid

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.log
+granusci/kb_store/
+granusci/kb_store_blind/
+granusci/runs/
+granusci/logs/
+granusci/memory/
+granular-dem-mcp/liggghts-src/
+DDDA-MCP/data/
+DDDA-MCP/uploads/

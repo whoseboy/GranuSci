@@ -1,0 +1,36 @@
+{
+  "name": "sprint_ablation",
+  "base": {
+    "intent": "研究振动颗粒床的能量标度规律：无量纲动能 e_k* 与势能 ep* 随振动强度 Γ、振幅径比 a/d 与填充率 F 的联合标度关系、参数空间子域结构与相态转变判据",
+    "max_steps": 300,
+    "model": "GLM-5.3",
+    "reviewer": "DeepSeek-V4-Pro"
+  },
+  "grid": [
+    {"id": "lit_none",
+     "flags": ["--exclude-tools",
+               "lit_literature_search,lit_check_novelty,lit_search_openalex,lit_survey,litf_acquire,litf_read,deep_read_paper"],
+     "_note": "文献全断（KB 保留）——测外部文献供给的总体价值。完结：review_failed_twice（幻觉引用实际发生、数值纪律未退化）。注意 KB 与外部文献功能等价（互为补位），本格实为'断在线检索、留本地馆藏'"},
+    {"id": "review_off",
+     "flags": ["--no-reviewer"],
+     "_note": "审稿门剥离——对照产出可信性（孤儿数值/幻觉引用/计数矛盾是否进终稿）。旧 aborted run 待新 harness（no_review_gate + 空终态复活）修复后收尾"},
+    {"id": "mech_off",
+     "flags": ["--ablate", "no_mechanism"],
+     "_note": "机制调查引导剥离——完结：review_failed_twice。单格实测机制行为有双驱动（技能引导+审稿门失败模式排查），引导剥离后行为未退化（防线冗余的发现）"},
+    {"id": "kb_blind",
+     "flags": ["--blind-kb"],
+     "_note": "盲知识库（本地馆藏抽掉核心卷目，外部文献保留）——与 lit_none 互为镜像：一个断在线检索留馆藏，一个盲馆藏留检索。实测踩 F=2 init 坑（无参数可行域先验）、外部精读补偿"},
+    {"id": "kb_blind_lit_none",
+     "flags": ["--blind-kb", "--exclude-tools",
+               "lit_literature_search,lit_check_novelty,lit_search_openalex,lit_survey,litf_acquire,litf_read,deep_read_paper"],
+     "_note": "领域知识供给归零（联合格）：盲 KB + 外部文献全断——测纯推理+工具反馈的研究底线，自主性的最强检验"},
+    {"id": "glm52",
+     "model": "GLM-5.2",
+     "_note": "基座横评·国产中档（paratera）"},
+    {"id": "dsv4flash",
+     "model": "DeepSeek-V4-Flash",
+     "_note": "基座横评·低档（paratera）。注意：与审稿模型 DeepSeek-V4-Pro 同厂不同档，报告表述时说明"}
+  ],
+  "seeds": [1],
+  "_note": "冲刺消融矩阵（2026-09-03 定；历次调整：砍 mech_off_review_off（mech_off 单格已证防线冗余）；砍 bohrium_only/openalex_only（用户判断正确——KB 兜底下检索通道差异被淹没，信息量配不上成本，lit_none 已覆盖文献腿核心主张）；gpt56sol 移出矩阵独立并行跑（Higress 网关不受 paratera 配额限制，专用监督器执行，产物仍在 runs/）。基线 = paper13（granusci/runs/20260902_200025_paper13，同意图/GLM-5.3/seed=1/max_steps=300），不重跑。多种子扩展为后续工作。"
+}

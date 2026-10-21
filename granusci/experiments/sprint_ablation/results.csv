@@ -1,0 +1,9 @@
+﻿exp,grid_id,seed,run_dir,final,n_steps,tool_calls,ledger_entries,elapsed_s,review_pass,review_rounds,orphan_numbers,llm_calls,prompt_tokens,completion_tokens,total_tokens
+sprint_ablation,dsv4flash,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_dsv4flash_s1,passed,207,193,45,619.2,True,,0,15,1769996,37644,1807640
+sprint_ablation,glm52,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_glm52_s1,passed,203,214,43,1697.4,True,,0,37,4417356,59096,4476452
+sprint_ablation,gpt56sol,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_gpt56sol_s1,(运行中/中断),,,,,False,,0,3,276537,3412,279949
+sprint_ablation,kb_blind_lit_none,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_kb_blind_lit_none_s1,review_failed_twice,210,245,43,1114.1,False,,1,17,1725060,45011,1770071
+sprint_ablation,kb_blind,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_kb_blind_s1,passed,267,202,17,7171.9,True,,0,138,11698727,259792,11958519
+sprint_ablation,lit_none,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_lit_none_s1,review_failed_twice,125,195,28,1613.8,False,,0,38,2253195,61840,2315035
+sprint_ablation,mech_off,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_mech_off_s1,review_failed_twice,147,230,23,606.5,False,,5,8,167945,20113,188058
+sprint_ablation,review_off,1,C:\Users\D0n9\Desktop\2026职工大赛——科研智能平台创新应用\granusci\experiments\sprint_ablation\runs\exp_sprint_ablation_review_off_s1,submitted_no_review,198,195,17,222.6,True,,0,3,428002,5270,433272
